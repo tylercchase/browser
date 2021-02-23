@@ -5,6 +5,6 @@
 TEST_CASE("1 is equal to 1") {
    REQUIRE(1 == 1);
    Parser parser;
-   std::ifstream testFile("test.html");
+   std::ifstream testFile("/home/tcchase/projects/browser/test.html"); // aboslute path for testing
    parser.passHTML(testFile);
 }

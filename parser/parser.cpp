@@ -21,12 +21,13 @@ void Parser::passHTML(std::ifstream &HTMLFile)
 
             a.name = line;
             current->children.push_back(a);
+            auto ref = current;
             current = &current->children[0];
+            current->parent = ref;
         }
         else
         {
-            a.name = line;
-            current->children.push_back(a);
+            current = current->parent;
         }
     }
     for (auto &node : DOM)
