@@ -1,17 +1,37 @@
 #include "parser.h"
 #include <iostream>
+
 void Parser::passHTML(std::ifstream &HTMLFile)
 {
-    DOM.push_back("Hi");
-    std::cout << DOM[0] << std::endl;
     std::string line;
+    Node * current;
     while (std::getline(HTMLFile, line, '>'))
     {
-        std::cout << line << std::endl;
-        std::cout << "starting" << line[1] << std::endl;
-        if (line.starts_with('<'))
-        {
-            std::cout << "YOO" << std::endl;
+        Node a;
+        if(DOM.size() == 0){
+            a.name = line.substr(1);
+            DOM.push_back(a);
+            current = &DOM[0];
+            continue;
         }
+        if (line.find('/') == -1)
+        {
+            line.erase(std::remove(line.begin(), line.end(), '\n'), line.end());
+            line.erase(std::remove(line.begin(), line.end(), ' '), line.end());
+
+            a.name = line;
+            current->children.push_back(a);
+            current = &current->children[0];
+        }
+        else
+        {
+            a.name = line;
+            current->children.push_back(a);
+        }
+    }
+    for (auto &node : DOM)
+    {
+        std::cout << node.name << std::endl;
+        std::cout << node.children[0].children[0].name << std::endl;
     }
 }
