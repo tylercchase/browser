@@ -18,13 +18,11 @@ void Parser::passHTML(std::ifstream &HTMLFile)
         }
         if (line.find('/') == -1)
         {
-            line.erase(std::remove(line.begin(), line.end(), '\n'), line.end());
-            line.erase(std::remove(line.begin(), line.end(), ' '), line.end());
-            a.name = line;
             a.text = line.substr(0,line.find('<'));
+            a.name = line.substr(line.find('<')+1);
             current->children.push_back(a);
             auto ref = current;
-            current = &current->children[0];
+            current = &current->children.back();
             current->parent = ref;
         }
         else
@@ -33,14 +31,13 @@ void Parser::passHTML(std::ifstream &HTMLFile)
             if(content.find_first_not_of(' ') != std::string::npos)
             {
                 current->text = content;
-                std::cout << "Content " << content << std::endl;
             }
             current = current->parent;
         }
     }
     for (auto &node : DOM)
     {
-        std::cout << node.name << std::endl;
-        std::cout << node.children[0].children[0].name << std::endl;
+        // std::cout << node.name << std::endl;
+        // std::cout << node.children[0].children[0].name << std::endl;
     }
 }
