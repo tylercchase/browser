@@ -4,6 +4,6 @@ using std::ostringstream;
 
 #include "catch.hpp"
 
-TEST_CASE("Rationals can be constructed and printed") {
+TEST_CASE("1 is equal to 1") {
    REQUIRE(1 == 1);
 }
