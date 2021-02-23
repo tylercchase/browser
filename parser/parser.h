@@ -7,5 +7,5 @@ class Parser {
     private:
         std::vector<std::string> DOM = {};
     public:
-        void passHTML(const std::ifstream &HTMLFile);
+        void passHTML( std::ifstream &HTMLFile);
 };
