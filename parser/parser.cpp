@@ -1,4 +1,6 @@
 #include "parser.h"
-void passHTML(std::ifstream HTMLFile){
-    
+#include <iostream>
+void Parser::passHTML(const std::ifstream &HTMLFile){
+    DOM.push_back("Hi");
+    std::cout << DOM[0] << std::endl;
 }
