@@ -1,8 +1,6 @@
-#include <sstream>
-using std::ostringstream;
 #include "../parser/parser.h"
-#include <istream>
 #include "../catch.hpp"
+#include <istream>
 
 TEST_CASE("1 is equal to 1") {
    REQUIRE(1 == 1);
