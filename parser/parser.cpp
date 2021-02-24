@@ -1,6 +1,7 @@
 #include "parser.h"
 #include <iostream>
 #include <algorithm>
+#include <sstream>
 void readChildren(Node &x, int spacer){
     for(int i=0; i < spacer; ++i){
         std::cout << " ";
@@ -26,6 +27,12 @@ void Parser::passHTML(std::ifstream &HTMLFile)
             a.text = line.substr(0,line.find('<'));
             a.name = line.substr(line.find('<')+1);
             current->children.push_back(a);
+            std::stringstream attributes(line.substr(line.find('<')+1));
+            std::string attr;
+            getline(attributes,attr, ' ');
+            while(getline(attributes, attr, ' ')){
+                std::cout << "Attributes " << attr << std::endl;
+            }
             auto ref = current;
             current = &current->children.back();
             current->parent = ref;
