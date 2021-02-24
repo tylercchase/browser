@@ -6,7 +6,11 @@ void readChildren(Node &x, int spacer){
     for(int i=0; i < spacer; ++i){
         std::cout << " ";
     }
-    std::cout << x.name << std::endl;
+    std::cout << x.name;
+    for(auto attr: x.params){
+        std::cout << " " << attr.name << "=" << attr.value;
+    }
+    std::cout << std::endl;
     std::for_each(x.children.begin(),x.children.end(), [spacer](Node &n){ readChildren(n,spacer+1); });
 };
 void Parser::passHTML(std::ifstream &HTMLFile)
@@ -31,7 +35,10 @@ void Parser::passHTML(std::ifstream &HTMLFile)
             std::string attr;
             getline(attributes,attr, ' ');
             while(getline(attributes, attr, ' ')){
-                std::cout << "Attributes " << attr << std::endl;
+                Param param;
+                param.name = attr.substr(0,attr.find('='));
+                param.value = attr.substr(attr.find('='));
+                a.params.push_back(param);
             }
             auto ref = current;
             current = &current->children.back();
