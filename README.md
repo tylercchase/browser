@@ -2,7 +2,7 @@
 My experimental browser in cpp
 
 Goals
-  - [ ] Element parsing for HTML
+  - [x] Element parsing for HTML
   - [ ] Attribute parsing
   - [ ] Display basic boxes of elements through some medium
     - SFML?
