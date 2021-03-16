@@ -13,7 +13,7 @@ void readChildren(Node &x, int spacer){
     std::cout << std::endl;
     std::for_each(x.children.begin(),x.children.end(), [spacer](Node &n){ readChildren(n,spacer+1); });
 };
-void Parser::passHTML(std::ifstream &HTMLFile)
+void Parser::passHTML( std::istream &HTMLFile)
 {
     std::string line;
     Node * current;

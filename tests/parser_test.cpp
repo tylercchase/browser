@@ -1,10 +1,10 @@
 #include "../parser/parser.h"
 #include <catch2/catch.hpp>
-#include <istream>
+#include <sstream>
 
 TEST_CASE("1 is equal to 1") {
    REQUIRE(1 == 1);
    Parser parser;
-   std::ifstream testFile("/home/tcchase/projects/browser/test.html"); // aboslute path for testing
-   parser.passHTML(testFile);
+   std::istringstream asdf("<html>\n<body>\n<a href=\"index.html\" target=\"_blank\">Link to something</a>\n<p>Hello World</p>\n<span>YOLO</span>\n\n</body>\n</html>");
+   parser.passHTML(asdf);
 }

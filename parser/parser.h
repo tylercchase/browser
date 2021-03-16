@@ -18,8 +18,9 @@ class Parser
 {
     // std::vector<std::tuple<std::string, std::vector<int>,std::vector<std::string>>> DOM;
 private:
-    std::vector<Node> DOM = {};
 
 public:
-    void passHTML(std::ifstream &HTMLFile);
+    void passHTML( std::istream &HTMLFile);
+    std::vector<Node> DOM = {};
+
 };
