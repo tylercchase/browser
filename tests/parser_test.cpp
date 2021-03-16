@@ -1,5 +1,5 @@
 #include "../parser/parser.h"
-#include "../catch.hpp"
+#include <catch2/catch.hpp>
 #include <istream>
 
 TEST_CASE("1 is equal to 1") {
