@@ -47,6 +47,7 @@ void Parser::passHTML(std::istream &HTMLFile) {
           } else if (attrFlag) {
             if (!quoteFlag && character == '"') {
               quoteFlag = true;
+              continue;
             }
             if (quoteFlag) {
               if (character == '"') {
@@ -54,6 +55,8 @@ void Parser::passHTML(std::istream &HTMLFile) {
                 a.params.push_back(param);
                 param.name = "";
                 param.value = "";
+                attrFlag = false;
+                continue;
               }
               param.value += character;
             }

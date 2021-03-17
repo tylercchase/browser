@@ -18,8 +18,9 @@ TEST_CASE("1 is equal to 1") {
     REQUIRE(parser.DOM[0].children[0].children[2].name == "span");
   }
   SECTION("Attribute parsing") {
-    REQUIRE(parser.DOM[0].children[0].children[0].params[0].name ==
-    "href"); REQUIRE(parser.DOM[0].children[0].children[0].params[0].value
-    == "index.html");
+    REQUIRE(parser.DOM[0].children[0].children[0].params[0].name == "href");
+    REQUIRE(parser.DOM[0].children[0].children[0].params[0].value == "index.html");
+    REQUIRE(parser.DOM[0].children[0].children[0].params[1].name == "target");
+    REQUIRE(parser.DOM[0].children[0].children[0].params[1].value == "_blank");
   }
 }
